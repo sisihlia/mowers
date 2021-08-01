@@ -1,17 +1,21 @@
 package com.model;
 
+import java.util.List;
+
 public class Mower implements Movement {
 
     private Orientation orientation;
     private Coordinate coordinate;
     private char[] instruction;
     private Lawn lawn;
+    private List<Coordinate> coords;
 
     public Mower(Coordinate coordinate, Orientation orientation, char [] instruction) {
         this.orientation=orientation;
         this.coordinate = coordinate;
         this.instruction=instruction;
     }
+
 
     public Mower(Coordinate coordinate, Orientation orientation) {
         this.orientation=orientation;
@@ -42,45 +46,6 @@ public class Mower implements Movement {
         this.instruction = instruction;
     }
 
-//    public void turnLeft() {
-//        switch (this.orientation) {
-//            case N:
-//                this.orientation=Orientation.W;
-//                break;
-//            case E:
-//                this.orientation=Orientation.N;
-//                break;
-//            case S:
-//                this.orientation=Orientation.E;
-//                break;
-//            case W:
-//                this.orientation=Orientation.S;
-//                break;
-//            default:
-//                throw new IllegalArgumentException("Invalid direction");
-//
-//        }
-//    }
-//
-//    public void turnRight() {
-//        switch (this.orientation) {
-//            case N:
-//                this.orientation=Orientation.E;
-//                break;
-//            case E:
-//                this.orientation=Orientation.S;
-//                break;
-//            case S:
-//                this.orientation=Orientation.W;
-//                break;
-//            case W:
-//                this.orientation=Orientation.N;
-//                break;
-//            default:
-//                throw new IllegalArgumentException("Invalid direction");
-//        }
-//    }
-
 
     public void turnLeft() {
         this.setOriantation(this.getOriantation().turnLeft());
@@ -109,39 +74,23 @@ public class Mower implements Movement {
             default:
                 throw new IllegalArgumentException("Invalid direction");
         }
-        if (!next.isOccupied) {
+        System.out.println(Executor.allowedToMove(this.getCoordinate()));
+        if (Executor.allowedToMove(this.getCoordinate()) == false) {
             if (next.isValidCoordinate(lawn)){
-                this.getCoordinate().unsetOccupied();
+                Executor.removeCoordinate(this.getCoordinate());
                 this.setCoordinate(next);
+                Executor.addCoordinate(this.getCoordinate());
             }
         }
-
     }
 
     public void move(Lawn lawn, char[] c) {
         this.lawn=lawn;
+        for (char i :c) {
+            Instruction in = Instruction.getInstruction(String.valueOf(i));
+            in.execute(this);
 
-        for (char i : c ) {
-            switch(Instruction.valueOf(String.valueOf(i))) {
-                case L:
-                    turnLeft();
-                    break;
-                case R:
-                    turnRight();
-                    break;
-                case F:
-                    moveForward();
-                    break;
-                default:
-                    break;
-
-            }
         }
-//        for (char i :c) {
-//            Instruction in = Instruction.valueOf(String.valueOf(i)){
-//
-//            }
-//        }
 
     }
 

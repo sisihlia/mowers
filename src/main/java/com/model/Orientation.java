@@ -4,36 +4,44 @@ public enum Orientation {
 
 
     E ("E") {
+        @Override
         public Orientation turnLeft() {
                 return Orientation.N;
         }
+        @Override
         public Orientation turnRight() {
             return Orientation.S;
 
         }
     },
     N ("N"){
+        @Override
         public Orientation turnLeft() {
             return Orientation.W;
         }
+        @Override
         public Orientation turnRight() {
             return Orientation.E;
 
         }
     },
     W ("W"){
+        @Override
         public Orientation turnLeft() {
             return Orientation.S;
         }
+        @Override
         public Orientation turnRight() {
             return Orientation.N;
 
         }
     },
     S ("S"){
+        @Override
         public Orientation turnLeft() {
             return Orientation.E;
         }
+        @Override
         public Orientation turnRight() {
             return Orientation.W;
 

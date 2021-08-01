@@ -10,7 +10,7 @@ public class Coordinate {
     public Coordinate(int x, int y) {
         this.x = x;
         this.y = y;
-        isOccupied=false;
+
     }
 
     public void setOccupied() {
@@ -20,7 +20,6 @@ public class Coordinate {
     public void unsetOccupied() {
         this.isOccupied=false;
     }
-
 
     public boolean isOccupied() {
         return isOccupied;
@@ -45,6 +44,12 @@ public class Coordinate {
     @Override
     public String toString() {
         return x + " "+ y;
+    }
+
+
+    public boolean equals(Coordinate b) {
+        return (0 == Integer.compare(getX(),b.getX())) && (0 ==Integer.compare(this.getY(), b.getY()));
+
     }
 
     public boolean isValidCoordinate(Lawn lawn) {
