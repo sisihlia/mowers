@@ -75,7 +75,7 @@ public class Mower implements Movement {
                 throw new IllegalArgumentException("Invalid direction");
         }
         System.out.println(Executor.allowedToMove(this.getCoordinate()));
-        if (Executor.allowedToMove(this.getCoordinate()) == false) {
+        if (!Executor.allowedToMove(next)) {
             if (next.isValidCoordinate(lawn)){
                 Executor.removeCoordinate(this.getCoordinate());
                 this.setCoordinate(next);
