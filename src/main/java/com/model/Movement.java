@@ -2,7 +2,7 @@ package com.model;
 
 public interface Movement {
 
-     void turnLeft();
+    void turnLeft();
      void turnRight();
      void moveForward();
 }

@@ -28,7 +28,7 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        String input="src/test/resources/input_2x3.txt";
+        String input="src/test/resources/input4.txt";
         Application file = new Application();
         List<String> myparse=file.readFromFile(input);
         Lawn lawn = new Lawn(myparse.get(0));

@@ -42,43 +42,53 @@ public class Mower implements Movement {
         this.instruction = instruction;
     }
 
+//    public void turnLeft() {
+//        switch (this.orientation) {
+//            case N:
+//                this.orientation=Orientation.W;
+//                break;
+//            case E:
+//                this.orientation=Orientation.N;
+//                break;
+//            case S:
+//                this.orientation=Orientation.E;
+//                break;
+//            case W:
+//                this.orientation=Orientation.S;
+//                break;
+//            default:
+//                throw new IllegalArgumentException("Invalid direction");
+//
+//        }
+//    }
+//
+//    public void turnRight() {
+//        switch (this.orientation) {
+//            case N:
+//                this.orientation=Orientation.E;
+//                break;
+//            case E:
+//                this.orientation=Orientation.S;
+//                break;
+//            case S:
+//                this.orientation=Orientation.W;
+//                break;
+//            case W:
+//                this.orientation=Orientation.N;
+//                break;
+//            default:
+//                throw new IllegalArgumentException("Invalid direction");
+//        }
+//    }
+
+
     public void turnLeft() {
-        switch (this.orientation) {
-            case N:
-                this.orientation=Orientation.W;
-                break;
-            case E:
-                this.orientation=Orientation.N;
-                break;
-            case S:
-                this.orientation=Orientation.E;
-                break;
-            case W:
-                this.orientation=Orientation.S;
-                break;
-            default:
-                throw new IllegalArgumentException("Invalid direction");
+        this.setOriantation(this.getOriantation().turnLeft());
+    };
 
-        }
-    }
 
-    public void turnRight() {
-        switch (this.orientation) {
-            case N:
-                this.orientation=Orientation.E;
-                break;
-            case E:
-                this.orientation=Orientation.S;
-                break;
-            case S:
-                this.orientation=Orientation.W;
-                break;
-            case W:
-                this.orientation=Orientation.N;
-                break;
-            default:
-                throw new IllegalArgumentException("Invalid direction");
-        }
+    public void turnRight(){
+        this.setOriantation(this.getOriantation().turnRight());
     }
 
     public void moveForward(){
@@ -105,6 +115,7 @@ public class Mower implements Movement {
                 this.setCoordinate(next);
             }
         }
+
     }
 
     public void move(Lawn lawn, char[] c) {
@@ -126,6 +137,11 @@ public class Mower implements Movement {
 
             }
         }
+//        for (char i :c) {
+//            Instruction in = Instruction.valueOf(String.valueOf(i)){
+//
+//            }
+//        }
 
     }
 

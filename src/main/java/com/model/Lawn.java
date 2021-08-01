@@ -7,7 +7,7 @@ public final class Lawn {
     private static int width;
     private  static int height;
     private List<Executor> executors = new ArrayList<>();
-
+    private List<Coordinate> coords = new ArrayList<>();
     /*
      A ConcurrentLinkedDeque is an appropriate choice when many threads will share access to a common collection.
      Like most other concurrent collection implementations, this class does not permit the use of null elements.
@@ -77,6 +77,7 @@ public final class Lawn {
         for (String str:mowersAndParam.keySet()) {
             String[] arr=str.split("\\s");
             Coordinate c = new Coordinate(Integer.parseInt(arr[0]),Integer.parseInt(arr[1]));
+            coords.add(c);
             c.setOccupied();
             if (!c.isValidCoordinate(this)) throw new IllegalArgumentException("Invalid Coordinate");
             Orientation o = Orientation.valueOf(arr[2]);
@@ -89,6 +90,7 @@ public final class Lawn {
 
     public void start() {
         Executor e= new Executor(mowers, this);
+        e.setCoords(coords);
         executors.add(e);
         executors.stream().forEach(ex -> ex.run());
     }
