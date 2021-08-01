@@ -1,8 +1,9 @@
 # mowers
 
-Goal
+# Goal
 Build a program that implements the following mower specification.
-Specification
+
+# Specification
 The client, company X, wants to develop an algorithm to mow rectangular surfaces.
 
 Mowers can be programmed to move throughout the entire surface. A mower's position is represented by Cartesian coordinates (X, Y), and an orientation (N, E, W, S). The lawn is divided into a grid to simplify navigation.
