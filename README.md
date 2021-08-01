@@ -1,4 +1,4 @@
-# mowers
+# Mowers
 
 # Goal
 Build a program that implements the following mower specification.
